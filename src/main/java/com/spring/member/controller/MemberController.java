@@ -55,4 +55,13 @@ public class MemberController {
         model.addAttribute("memberList", memberDTOList);
         return "list";
     }
+
+    @GetMapping("/member/{id}")
+    public String findById(@PathVariable Long id, Model model){
+        // /member/{id}에 받아온 값을 PathVariable로 가져온다.
+        MemberDTO memberDTO = memberService.findById(id);
+        model.addAttribute("member", memberDTO);
+        return "detail";
+    }
+
 }
